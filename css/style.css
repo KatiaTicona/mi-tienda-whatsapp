@@ -3,258 +3,141 @@
 ══════════════════════════════════════════ */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
 
-/* ══════════════════════════════════════════
-   VARIABLES — MODO CLARO (Lila suave)
-══════════════════════════════════════════ */
+/* Variables */
 :root,
 [data-theme="light"] {
-  --bg:          #f0ecf8;
-  --bg2:         #e8e2f4;
-  --surface:     #faf8ff;
-  --surface2:    #ede8f8;
-  --border:      #d8d0ee;
-  --border2:     #c4b8e4;
+  --bg:          #f8f4ff;
+  --surface:     #ffffff;
+  --border:      #e0d4f5;
   --accent:      #7c4dbd;
-  --accent-soft: #9d71d4;
-  --accent-pale: #e8dfff;
+  --accent-soft:#9d71d4;
   --text:        #2a1f3d;
-  --text2:       #5a4d72;
-  --muted:       #9580b8;
+  --muted:       #8a6eb8;
   --green:       #25D366;
-  --green-dark:  #1da851;
-  --danger:      #c0392b;
-  --shadow:      rgba(90,50,160,0.12);
 }
 
-/* ══════════════════════════════════════════
-   VARIABLES — MODO OSCURO (Más claro)
-══════════════════════════════════════════ */
 [data-theme="dark"] {
-  --bg:          #1a1628;
-  --bg2:         #221c34;
+  --bg:          #1f1a2e;
   --surface:     #2a2340;
-  --surface2:    #342c4a;
-  --border:      #463a5f;
-  --border2:     #574a75;
-  --accent:      #b48ef0;
-  --accent-soft: #c5a8f5;
-  --accent-pale: #3a2f55;
-  --text:        #f0e9ff;
-  --text2:       #d0c2f0;
-  --muted:       #9b85c4;
+  --border:      #524a75;
+  --accent:      #c4a3ff;
+  --accent-soft:#d4b8ff;
+  --text:        #f5f0ff;
+  --muted:       #a38ed4;
   --green:       #25D366;
-  --green-dark:  #1da851;
-  --danger:      #e05555;
-  --shadow:      rgba(0,0,0,0.35);
 }
 
-/* ══════════════════════════════════════════
-   RESET & BASE
-══════════════════════════════════════════ */
-* { 
-  margin: 0; 
-  padding: 0; 
-  box-sizing: border-box; 
-}
+/* Base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: 'Jost', sans-serif;
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
-  transition: background 0.4s, color 0.4s;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    radial-gradient(circle at 15% 15%, rgba(160,100,240,0.08) 0%, transparent 50%),
-    radial-gradient(circle at 85% 85%, rgba(120,60,200,0.06) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Header */
-header {
-  background: rgba(250,248,255,0.92);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
-  padding: 0 2.5rem;
-  height: 68px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-[data-theme="dark"] header { 
-  background: rgba(42,35,64,0.92); 
-}
-
-/* Resto de estilos (mantengo lo bonito) */
-.logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.2rem;
-  font-weight: 600;
-  letter-spacing: 4px;
-  color: var(--accent);
-}
-
-.header-right { 
-  display: flex; 
-  align-items: center; 
-  gap: 0.75rem; 
-}
-
-/* Cart Button */
-.cart-btn {
-  background: var(--accent);
-  border: none;
-  color: #fff;
-  padding: 0.5rem 1.2rem;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 16px var(--shadow);
-}
-
-.cart-count {
-  background: #fff;
-  color: var(--accent);
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
-  font-weight: 500;
-}
-
-/* Hero */
-.hero {
-  padding: 5rem 2rem 4rem;
-  text-align: center;
-}
-
-.hero h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3rem, 7vw, 5.5rem);
-  font-weight: 600;
-  letter-spacing: 2px;
-  line-height: 1.05;
-  margin-bottom: 1.2rem;
-}
-
-.hero h1 em { 
-  color: var(--accent); 
-  font-style: italic; 
-}
-
-/* Catálogo */
-.catalog {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 1.8rem;
-  padding: 2.5rem;
-}
-
+/* Card */
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 20px;
   overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
   transition: all 0.3s;
-  box-shadow: 0 2px 12px var(--shadow);
 }
 
-.card:hover { 
-  transform: translateY(-8px); 
-  box-shadow: 0 15px 35px var(--shadow); 
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(124,77,189,0.15);
 }
 
 .card-img {
   height: 220px;
-  background: linear-gradient(135deg, var(--bg2), var(--accent-pale));
+  background: #f0e9ff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 5.5rem;
+  font-size: 5rem;
   border-bottom: 1px solid var(--border);
 }
 
-.card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.card-body {
+  padding: 1.4rem;
 }
 
-.card-body { 
-  padding: 1.3rem; 
+.card-cat {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+  margin-bottom: 0.4rem;
 }
 
-.card-cat { 
-  font-size: 0.7rem; 
-  letter-spacing: 2px; 
-  text-transform: uppercase; 
-  color: var(--accent-soft); 
-  margin-bottom: 0.5rem; 
-  font-weight: 500;
+.card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
 }
 
-.card-name { 
-  font-family: 'Cormorant Garamond', serif; 
-  font-size: 1.25rem; 
-  font-weight: 600; 
-  margin-bottom: 0.6rem; 
-  line-height: 1.3;
-}
-
-.card-price { 
-  font-size: 1.15rem; 
-  font-weight: 600; 
-  color: var(--accent); 
+.card-price {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 1rem;
 }
 
 /* Botón agregar */
 .add-btn {
   width: 100%;
-  background: var(--accent-pale);
-  color: var(--accent);
-  border: 1px solid var(--border2);
-  padding: 0.7rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.75rem;
   border-radius: 12px;
   cursor: pointer;
   font-weight: 500;
-  margin-top: 0.5rem;
   transition: all 0.2s;
 }
 
-.add-btn:hover { 
-  background: var(--accent); 
-  color: white; 
+.add-btn:hover {
+  background: #6a3aa8;
+  transform: translateY(-2px);
 }
 
-/* Carrito y demás estilos se mantienen igual (solo quité lo de tallas) */
-
+/* Carrito - WhatsApp Button */
 .whatsapp-btn {
   background: var(--green);
-  color: #fff;
+  color: white;
   border: none;
-  padding: 0.95rem;
-  border-radius: 14px;
-  cursor: pointer;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 1rem;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 10px;
+  cursor: pointer;
 }
 
-.whatsapp-btn:hover {
-  background: var(--green-dark);
+.whatsapp-btn svg {
+  width: 24px;     /* ← Tamaño arreglado */
+  height: 24px;
+}
+
+/* Toast y demás se mantienen */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface);
+  color: var(--text);
+  padding: 12px 24px;
+  border-radius: 50px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  z-index: 1000;
 }
