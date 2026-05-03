@@ -1,7 +1,7 @@
 // ══════════════════════════════════════════
 //  ▶ CONFIGURACIÓN — edita estos valores
 // ══════════════════════════════════════════
-const WHATSAPP_NUMBER = "51946734127"; // Tu número con código de país (sin + ni espacios)
+const WHATSAPP_NUMBER = "51946744127"; // Tu número con código de país (sin + ni espacios)
 const TIENDA_NOMBRE   = "Renova";      // Nombre de tu tienda
 
 // ══════════════════════════════════════════
