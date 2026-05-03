@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Tienda - Pedidos por WhatsApp</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>🍔 Mi Tienda</h1>
+    <p>Haz tu pedido y te contestamos por WhatsApp</p>
+  </header>
+
+  <main>
+    <section id="productos">
+      <h2>Productos</h2>
+      <div class="productos-grid" id="lista-productos">
+        <!-- Los productos se generan con JavaScript -->
+      </div>
+    </section>
+
+    <section id="carrito">
+      <h2>🛒 Carrito (<span id="contador">0</span>)</h2>
+      <div id="items-carrito"></div>
+      <div class="total">
+        <strong>Total: S/ <span id="total-precio">0.00</span></strong>
+      </div>
+      <button id="btn-pedir" class="btn-whatsapp">
+        Pedir por WhatsApp
+      </button>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
