@@ -70,14 +70,6 @@ button:focus, input:focus{outline:3px solid rgba(20,184,166,0.18);outline-offset
 .muted{color:#64748b;font-size:0.9rem}
 .center{text-align:center}
 
-.logo-upload{display:grid;gap:14px;padding:18px 20px;margin-bottom:18px;background:#fff;border-radius:16px;border:1px solid #e6edf3;box-shadow:0 10px 32px rgba(15,23,42,0.06)}
-.logo-upload-info h2{margin-bottom:6px;font-size:1.05rem;color:#0f1724}
-.logo-upload-info p{color:#475569;line-height:1.5}
-.logo-upload-controls{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.logo-upload-controls input[type="file"]{padding:10px 12px;border-radius:12px;border:1px solid #e6edf3;cursor:pointer}
-.logo-preview{min-height:70px;min-width:180px;padding:14px;border-radius:14px;border:1px dashed #cbd5e1;color:#64748b;display:flex;align-items:center;justify-content:center;background:#f8fafc}
-.logo-preview img{max-height:70px;width:auto;display:block;border-radius:10px}
-
 /* Fin del archivo */
 
 /* ----------------------------- */
