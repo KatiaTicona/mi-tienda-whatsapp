@@ -2,15 +2,16 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:#0f1724;background:#f5f7fb;line-height:1.5;padding:24px}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:#0f1724;background:#b992e6;line-height:1.5;padding:24px}
 
 /* Contenedor principal */
 .site{max-width:1100px;margin:0 auto}
 
 /* Encabezado */
 .header{display:flex;align-items:center;justify-content:space-between;padding:16px;background:#fff;border-radius:12px;box-shadow:0 6px 20px rgba(15,23,42,0.06);margin-bottom:22px}
-.logo{font-weight:700;color:#0f1724;font-size:1.35rem;letter-spacing:.05em}
-.logo img{max-height:48px;width:auto;display:block}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{width:72px;height:72px;object-fit:cover;border-radius:50%;display:block;border:4px solid rgba(255,255,255,0.18);box-shadow:0 6px 18px rgba(2,6,23,0.12)}
+.logo .text{font-weight:700;color:#0f1724;font-size:1.15rem;letter-spacing:.03em}
 .search{flex:1;margin:0 20px}
 .search input{width:360px;max-width:100%;padding:10px 12px;border:1px solid #e6edf3;border-radius:10px}
 
