@@ -16,20 +16,20 @@ const TIENDA_NOMBRE   = "Renova";      // Nombre de tu tienda
 //      badge   → etiqueta opcional: "Nuevo" | "Top" | "Oferta" | quitar línea
 // ══════════════════════════════════════════
 const products = [
-  { id:1,  name:"Polera Oversize Basic",  cat:"poleras",    price:49.90, emoji:"👕", sizes:["XS","S","M","L","XL"],    badge:"Nuevo" },
-  { id:2,  name:"Polera Gráfica Urban",   cat:"poleras",    price:59.90, emoji:"🎨", sizes:["S","M","L","XL"] },
-  { id:3,  name:"Polera Crop Essential",  cat:"poleras",    price:44.90, emoji:"✨", sizes:["XS","S","M","L"] },
-  { id:4,  name:"Polo Lino Relaxed",      cat:"poleras",    price:64.90, emoji:"🌿", sizes:["S","M","L","XL"],         badge:"Top" },
-  { id:5,  name:"Jean Skinny Clásico",    cat:"pantalones", price:89.90, emoji:"👖", sizes:["28","30","32","34","36"] },
-  { id:6,  name:"Jogger Cargo Street",    cat:"pantalones", price:79.90, emoji:"🔲", sizes:["S","M","L","XL"],         badge:"Nuevo" },
-  { id:7,  name:"Pantalón Wide Leg",      cat:"pantalones", price:95.90, emoji:"🖤", sizes:["XS","S","M","L","XL"] },
-  { id:8,  name:"Chaqueta Bomber",        cat:"chaquetas",  price:149.90,emoji:"🧥", sizes:["S","M","L","XL"] },
-  { id:9,  name:"Hoodie Premium",         cat:"chaquetas",  price:119.90,emoji:"🫧", sizes:["S","M","L","XL","XXL"],   badge:"Top" },
-  { id:10, name:"Chaqueta Denim",         cat:"chaquetas",  price:135.90,emoji:"🔵", sizes:["XS","S","M","L","XL"] },
-  { id:11, name:"Gorra Snapback",         cat:"accesorios", price:34.90, emoji:"🧢", sizes:["Única"] },
-  { id:12, name:"Bolso Tote Canvas",      cat:"accesorios", price:39.90, emoji:"👜", sizes:["Única"] },
-  { id:13, name:"Cinturón Urban",         cat:"accesorios", price:29.90, emoji:"🔗", sizes:["S/M","L/XL"] },
-  { id:14, name:"Calcetines Pack x3",     cat:"accesorios", price:24.90, emoji:"🧦", sizes:["Única"] },
+  { id:1,  name:"Polera Oversize Basic",  cat:"poleras",    price:49.90, emoji:"👕", img:"assets/prueba1.png", sizes:["XS","S","M","L","XL"],    badge:"Nuevo" },
+  { id:2,  name:"Polera Gráfica Urban",   cat:"poleras",    price:59.90, emoji:"🎨", img:"assets/prueba2.png", sizes:["S","M","L","XL"] },
+  { id:3,  name:"Polera Crop Essential",  cat:"poleras",    price:44.90, emoji:"✨", img:"assets/prueba3.png", sizes:["XS","S","M","L"] },
+  { id:4,  name:"Polo Lino Relaxed",      cat:"poleras",    price:64.90, emoji:"🌿", img:"assets/prueba1.png", sizes:["S","M","L","XL"],         badge:"Top" },
+  { id:5,  name:"Jean Skinny Clásico",    cat:"pantalones", price:89.90, emoji:"👖", img:"assets/prueba2.png", sizes:["28","30","32","34","36"] },
+  { id:6,  name:"Jogger Cargo Street",    cat:"pantalones", price:79.90, emoji:"🔲", img:"assets/prueba3.png", sizes:["S","M","L","XL"],         badge:"Nuevo" },
+  { id:7,  name:"Pantalón Wide Leg",      cat:"pantalones", price:95.90, emoji:"🖤", img:"assets/prueba1.png", sizes:["XS","S","M","L","XL"] },
+  { id:8,  name:"Chaqueta Bomber",        cat:"chaquetas",  price:149.90,emoji:"🧥", img:"assets/prueba2.png", sizes:["S","M","L","XL"] },
+  { id:9,  name:"Hoodie Premium",         cat:"chaquetas",  price:119.90,emoji:"🫧", img:"assets/prueba3.png", sizes:["S","M","L","XL","XXL"],   badge:"Top" },
+  { id:10, name:"Chaqueta Denim",         cat:"chaquetas",  price:135.90,emoji:"🔵", img:"assets/prueba1.png", sizes:["XS","S","M","L","XL"] },
+  { id:11, name:"Gorra Snapback",         cat:"accesorios", price:34.90, emoji:"🧢", img:"assets/prueba2.png", sizes:["Única"] },
+  { id:12, name:"Bolso Tote Canvas",      cat:"accesorios", price:39.90, emoji:"👜", img:"assets/prueba3.png", sizes:["Única"] },
+  { id:13, name:"Cinturón Urban",         cat:"accesorios", price:29.90, emoji:"🔗", img:"assets/prueba1.png", sizes:["S/M","L/XL"] },
+  { id:14, name:"Calcetines Pack x3",     cat:"accesorios", price:24.90, emoji:"🧦", img:"assets/prueba2.png", sizes:["Única"] },
 ];
 
 // ══════════════════════════════════════════
@@ -225,8 +225,64 @@ function bumpCount() {
   setTimeout(() => el.classList.remove('bump'), 300);
 }
 
+function setCompanyLogo(src) {
+  const logoEl = document.querySelector('.logo');
+  logoEl.innerHTML = `<img src="${src}" alt="Logo de empresa">`;
+}
+
+function handleLogoUpload(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  if (!file.type.startsWith('image/')) {
+    showToast('Selecciona una imagen válida');
+    event.target.value = '';
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    const dataUrl = reader.result;
+    setCompanyLogo(dataUrl);
+    document.getElementById('logoPreview').innerHTML = `<img src="${dataUrl}" alt="Vista previa del logo">`;
+  };
+  reader.readAsDataURL(file);
+}
+
+// Actualizar handler para también subir al servidor
+document.getElementById('companyLogoInput').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  handleLogoUpload(e);
+  if (file) uploadLogoToServer(file);
+});
+
+// Enviar archivo al servidor para persistirlo en assets/renova.jpg
+function uploadLogoToServer(file) {
+  const fd = new FormData();
+  fd.append('logo', file, 'renova.jpg');
+
+  return fetch('/upload-logo', { method: 'POST', body: fd })
+    .then(res => res.json())
+    .then(json => {
+      if (!json.ok) throw new Error(json.message || 'Upload failed');
+      showToast('Logo guardado en el servidor', true);
+      return json;
+    })
+    .catch(err => {
+      console.error(err);
+      showToast('Error al subir el logo');
+    });
+}
+
 // ══════════════════════════════════════════
 //  INICIO
 // ══════════════════════════════════════════
 loadTheme();
+document.getElementById('companyLogoInput').addEventListener('change', handleLogoUpload);
+
+// Establecer logo por defecto desde assets/renova.jpg y mostrar vista previa
+const defaultLogoPath = 'assets/renova.jpg';
+setCompanyLogo(defaultLogoPath);
+const previewEl = document.getElementById('logoPreview');
+if (previewEl) previewEl.innerHTML = `<img src="${defaultLogoPath}" alt="Vista previa del logo">`;
+
 renderCatalog('all');

@@ -1,0 +1,9 @@
+node_modules/
+uploads/
+.env
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.vscode/
+assets/Gemini_Generated_Image_*.png
